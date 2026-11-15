@@ -83,7 +83,7 @@ function CourseBuilder.Build()
 
 	-- ===== Stage 1: first steps (plain jumps) =====
 	for i = 1, 4 do
-		part(course, "Step" .. i, Vector3.new(8, 1, 8), CFrame.new(0, i * 1.5, 15 + i * 10), C.Platform)
+		part(course, "Step" .. i, Vector3.new(10, 1, 10), CFrame.new(0, i * 1.2, 14 + i * 11), C.Platform)
 	end
 	part(course, "Stage1End", Vector3.new(16, 2, 14), CFrame.new(0, 6, 64), C.Floor)
 	checkpoint(course, 1, CFrame.new(0, 7.5, 64))
@@ -92,9 +92,9 @@ function CourseBuilder.Build()
 	-- Floor stops. A long ceiling slab runs overhead; hanging ledges under it are
 	-- walked on their underside after flipping. End platform is back on the floor.
 	part(course, "CeilingSlab", Vector3.new(18, 2, 74), CFrame.new(0, 22, 112), C.Ceiling)
-	for i = 0, 4 do
+	for i = 0, 5 do
 		-- hanging ledge: top touches the slab, underside at y = 19 is the floor when flipped
-		part(course, "HangLedge" .. i, Vector3.new(8, 2, 8), CFrame.new((i % 2 == 0) and -4 or 4, 20, 84 + i * 14), C.Platform)
+		part(course, "HangLedge" .. i, Vector3.new(10, 2, 10), CFrame.new((i % 2 == 0) and -4 or 4, 20, 82 + i * 11), C.Platform)
 	end
 	sign(course, CFrame.new(0, 12, 76) * CFrame.Angles(0, math.rad(180), 0), Vector3.new(16, 5, 1),
 		"No floor? FLIP and walk the ceiling!", C.AccentAlt)
@@ -105,9 +105,9 @@ function CourseBuilder.Build()
 	local lava = part(course, "LavaFloor", Vector3.new(40, 1, 62), CFrame.new(0, 0, 196), C.Lava, Enum.Material.Neon)
 	lava:SetAttribute("IsKill", true)
 	part(course, "LavaCeiling", Vector3.new(18, 2, 62), CFrame.new(0, 24, 196), C.Ceiling)
-	for i = 0, 3 do
-		part(course, "LavaIsland" .. i, Vector3.new(7, 1, 7), CFrame.new((i % 2 == 0) and -8 or 8, 4 + i, 172 + i * 15), C.Platform)
-		part(course, "LavaHang" .. i, Vector3.new(7, 2, 7), CFrame.new((i % 2 == 0) and 8 or -8, 22, 179 + i * 15), C.Platform)
+	for i = 0, 4 do
+		part(course, "LavaIsland" .. i, Vector3.new(9, 1, 9), CFrame.new((i % 2 == 0) and -8 or 8, 4 + i, 170 + i * 12), C.Platform)
+		part(course, "LavaHang" .. i, Vector3.new(9, 2, 9), CFrame.new((i % 2 == 0) and 8 or -8, 22, 176 + i * 12), C.Platform)
 	end
 	part(course, "Stage3End", Vector3.new(16, 2, 14), CFrame.new(0, 8, 236), C.Floor)
 	checkpoint(course, 3, CFrame.new(0, 9.5, 236))
@@ -115,10 +115,10 @@ function CourseBuilder.Build()
 	-- ===== Stage 4: moving platform over a pit =====
 	local pit = part(course, "PitLava", Vector3.new(44, 1, 40), CFrame.new(0, 2, 266), C.Lava, Enum.Material.Neon)
 	pit:SetAttribute("IsKill", true)
-	local mover = part(course, "MovingPlatform", Vector3.new(10, 1, 10), CFrame.new(0, 10, 266), C.AccentAlt, Enum.Material.Neon)
+	local mover = part(course, "MovingPlatform", Vector3.new(12, 1, 12), CFrame.new(0, 10, 266), C.AccentAlt, Enum.Material.Neon)
 	mover:SetAttribute("MoveAxis", "X")
-	mover:SetAttribute("MoveDistance", 14)
-	mover:SetAttribute("MoveSpeed", 0.7)
+	mover:SetAttribute("MoveDistance", 9)
+	mover:SetAttribute("MoveSpeed", 0.5)
 	mover:SetAttribute("BaseCFrame", mover.CFrame)
 	part(course, "Stage4End", Vector3.new(16, 2, 14), CFrame.new(0, 8, 294), C.Floor)
 	checkpoint(course, 4, CFrame.new(0, 9.5, 294))
@@ -147,8 +147,8 @@ function CourseBuilder.Build()
 	part(course, "AlleyCeiling", Vector3.new(16, 2, 58), CFrame.new(0, 26, 380), C.Ceiling)
 	flipPad(course, "PadUp1", CFrame.new(0, 9.5, 362), "up")
 	for i = 0, 2 do
-		part(course, "AlleyHang" .. i, Vector3.new(8, 2, 8), CFrame.new(0, 24, 372 + i * 12), C.Platform)
-		part(course, "AlleyStep" .. i, Vector3.new(8, 1, 8), CFrame.new(0, 10, 378 + i * 12), C.Platform)
+		part(course, "AlleyHang" .. i, Vector3.new(10, 2, 10), CFrame.new(0, 24, 370 + i * 10), C.Platform)
+		part(course, "AlleyStep" .. i, Vector3.new(10, 1, 10), CFrame.new(0, 10, 376 + i * 10), C.Platform)
 	end
 	flipPad(course, "PadDown1", CFrame.new(0, 25.5, 402) * CFrame.Angles(0, 0, math.pi), "down")
 	part(course, "Stage6End", Vector3.new(16, 2, 14), CFrame.new(0, 8, 416), C.Floor)
@@ -159,7 +159,7 @@ function CourseBuilder.Build()
 	part(course, "ShaftWallL", Vector3.new(2, 44, 18), CFrame.new(-10, 30, 434), C.Platform)
 	part(course, "ShaftWallR", Vector3.new(2, 44, 18), CFrame.new(10, 30, 434), C.Platform)
 	for i = 0, 3 do
-		part(course, "ShaftLedge" .. i, Vector3.new(7, 1, 7), CFrame.new((i % 2 == 0) and -5 or 5, 14 + i * 10, 434), C.Platform)
+		part(course, "ShaftLedge" .. i, Vector3.new(9, 1, 9), CFrame.new((i % 2 == 0) and -5 or 5, 13 + i * 8, 434), C.Platform)
 	end
 	part(course, "ShaftTop", Vector3.new(18, 2, 18), CFrame.new(0, 54, 434), C.Ceiling)
 	flipPad(course, "PadShaft", CFrame.new(0, 9.5, 434), "toggle")
