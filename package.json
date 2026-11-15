@@ -1,0 +1,7 @@
+{
+  "name": "flipfall-obby",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FLIPFALL — a gravity-flip obby for Roblox. Entry for make.fun roblox-game-01.",
+  "type": "module"
+}
