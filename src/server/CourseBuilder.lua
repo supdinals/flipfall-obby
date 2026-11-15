@@ -83,10 +83,10 @@ function CourseBuilder.Build()
 
 	-- ===== Stage 1: first steps (plain jumps) =====
 	for i = 1, 4 do
-		part(course, "Step" .. i, Vector3.new(8, 1, 8), CFrame.new(0, i * 1.5, 16 + i * 11), C.Platform)
+		part(course, "Step" .. i, Vector3.new(8, 1, 8), CFrame.new(0, i * 1.5, 15 + i * 10), C.Platform)
 	end
-	part(course, "Stage1End", Vector3.new(16, 2, 14), CFrame.new(0, 6, 68), C.Floor)
-	checkpoint(course, 1, CFrame.new(0, 7.5, 68))
+	part(course, "Stage1End", Vector3.new(16, 2, 14), CFrame.new(0, 6, 64), C.Floor)
+	checkpoint(course, 1, CFrame.new(0, 7.5, 64))
 
 	-- ===== Stage 2: ceiling walk =====
 	-- Floor stops. A long ceiling slab runs overhead; hanging ledges under it are

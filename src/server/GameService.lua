@@ -112,6 +112,22 @@ function GameService.Init(course, gameEvent)
 		FlipService.State[player] = nil
 	end)
 
+	-- Safety net: respawn anyone who falls out of the course, in either
+	-- direction. Down past the lava line, or UP past the ceiling line after a
+	-- missed flip (upward falls never hit FallenPartsDestroyHeight).
+	RunService.Heartbeat:Connect(function()
+		for _, player in Players:GetPlayers() do
+			local character = player.Character
+			local root = character and character:FindFirstChild("HumanoidRootPart")
+			local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+			if root and humanoid and humanoid.Health > 0 then
+				if root.Position.Y < -25 or root.Position.Y > 100 then
+					humanoid.Health = 0
+				end
+			end
+		end
+	end)
+
 	-- Animate every part tagged as a mover in one heartbeat loop.
 	local movers = {}
 	for _, descendant in course:GetDescendants() do
